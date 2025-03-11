@@ -27,7 +27,7 @@ public class Eventsdemo : MonoBehaviour
     }
     public void Changec()
     {
-        Clr.color = Color.Lerp(Color.red, Color.blue, T.value);
+        Clr.color = Color.Lerp(Color.white, Color.blue, T.value);
     }
     public void entered()
     {
