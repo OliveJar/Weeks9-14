@@ -342,7 +342,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1679791377}
         m_TargetAssemblyTypeName: Eventsdemo, Assembly-CSharp
-        m_MethodName: Alsopushedbutton
+        m_MethodName: Changec
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -909,6 +909,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 816303978}
+  Clr: {fileID: 816303980}
+  T: {fileID: 618430981}
 --- !u!114 &1679791378
 MonoBehaviour:
   m_ObjectHideFlags: 0

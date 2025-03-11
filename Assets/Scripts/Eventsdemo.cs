@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Eventsdemo : MonoBehaviour
 {
     public RectTransform star;
+    public Image Clr;
+    public Slider T;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,11 +23,11 @@ public class Eventsdemo : MonoBehaviour
 
     public void pushedbutton()
     {
-        Debug.Log("Button pushed");
+        Clr.color = Color.yellow;
     }
-    public void Alsopushedbutton()
+    public void Changec()
     {
-        Debug.Log("Me too");
+        Clr.color = Color.Lerp(Color.red, Color.blue, T.value);
     }
     public void entered()
     {
