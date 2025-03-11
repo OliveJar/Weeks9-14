@@ -8,6 +8,7 @@ public class Eventsdemo : MonoBehaviour
     public RectTransform star;
     public Image Clr;
     public Slider T;
+    public Image Sli;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Eventsdemo : MonoBehaviour
     public void Changec()
     {
         Clr.color = Color.Lerp(Color.white, Color.blue, T.value);
+        Sli.color = Clr.color;
     }
     public void entered()
     {
