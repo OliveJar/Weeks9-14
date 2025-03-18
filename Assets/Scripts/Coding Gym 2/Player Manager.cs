@@ -35,18 +35,16 @@ public class PlayerManager : MonoBehaviour
     {
         player2.enabled = false;
         player1.enabled = true;
+        Debug.Log("Switched to player 1");
         yield return new WaitForSeconds(10);
         Switched = true;
-
-        Debug.Log("Switched to player 1");
     }
     private IEnumerator switchplayer2()
     {
         player1.enabled = false;
         player2.enabled = true;
+        Debug.Log("Switched to player 2");
         yield return new WaitForSeconds(10);
         Switched = false;
-
-        Debug.Log("Switched to player 2");
     }
 }
