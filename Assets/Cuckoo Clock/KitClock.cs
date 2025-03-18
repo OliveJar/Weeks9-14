@@ -25,7 +25,7 @@ public class KitClock : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && t >= 5)
         {
             StopAllCoroutines();
             StartCoroutine(runTheClock());
