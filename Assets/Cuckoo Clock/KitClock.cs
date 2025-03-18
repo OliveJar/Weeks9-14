@@ -26,10 +26,14 @@ public class KitClock : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && t >= 5)
+        if (Input.GetKeyDown(KeyCode.Space) && t >= 4.9)
         {
+            t = 0;
             StopAllCoroutines();
             StartCoroutine(runTheClock());
+        }
+        if (t >= 5)
+        {
         }
     }
 
@@ -46,8 +50,6 @@ public class KitClock : MonoBehaviour
 
     private IEnumerator time ()
     {
-        t = 0;
-
         while (t < timeAnHourTakes)
         {
             t += Time.deltaTime;
