@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class KitClock : MonoBehaviour
 {
@@ -35,6 +36,12 @@ public class KitClock : MonoBehaviour
     private IEnumerator runTheClock()
     {
             yield return StartCoroutine(time());
+    }
+
+    public void startAgain()
+    {
+        StopAllCoroutines();
+        StartCoroutine(runTheClock());
     }
 
     private IEnumerator time ()
