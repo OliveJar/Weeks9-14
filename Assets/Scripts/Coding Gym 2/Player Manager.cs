@@ -35,7 +35,6 @@ public class PlayerManager : MonoBehaviour
     {
         player2.enabled = false;
         player1.enabled = true;
-        Debug.Log("Switched to player 1");
         yield return new WaitForSeconds(10);
         Switched = true;
     }
@@ -43,7 +42,6 @@ public class PlayerManager : MonoBehaviour
     {
         player1.enabled = false;
         player2.enabled = true;
-        Debug.Log("Switched to player 2");
         yield return new WaitForSeconds(10);
         Switched = false;
     }
