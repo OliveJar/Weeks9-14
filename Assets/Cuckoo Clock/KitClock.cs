@@ -20,7 +20,21 @@ public class KitClock : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(time());
+        StartCoroutine(runTheClock());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StopAllCoroutines();
+            StartCoroutine(runTheClock());
+        }
+    }
+
+    private IEnumerator runTheClock()
+    {
+            yield return StartCoroutine(time());
     }
 
     private IEnumerator time ()
