@@ -29,8 +29,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-
-
     private IEnumerator switchplayer1()
     {
         player2.enabled = false;
