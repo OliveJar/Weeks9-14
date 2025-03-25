@@ -88,7 +88,7 @@ AnimationClip:
   - time: 0.35714287
     functionName: AttackHasFinished
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 9100000, guid: 57157967957872e419c5e725213ba744, type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
