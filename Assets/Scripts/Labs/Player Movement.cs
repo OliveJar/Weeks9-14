@@ -28,19 +28,19 @@ public class PlayerMovement : MonoBehaviour
             playerRB.velocity = Vector2.zero;
         }
         else
-            playerRB.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, playerRB.velocity.y);
+            playerRB.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        /*if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isGrounded = false;
             playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
+        }*/
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    /*void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
-    }
+    }*/
 }

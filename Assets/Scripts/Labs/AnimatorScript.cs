@@ -23,7 +23,7 @@ public class AnimatorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = Input.GetAxis("Horizontal");
+        direction = Input.GetAxis("Horizontal") + Input.GetAxis("Vertical");
         animator.SetFloat("Speed", Mathf.Abs (direction));
 
         if (direction < 0)
