@@ -10,6 +10,10 @@ public class Playermovement : MonoBehaviour
     [SerializeField]
     private Sprite[] sprites;
 
+    [Header("Player Reference")]
+
+    public Player player; // Reference to the player
+
 
     [Header("Player Movement")]
     [SerializeField]
@@ -106,6 +110,14 @@ public class Playermovement : MonoBehaviour
             playerRB.velocity = new Vector2 (Mathf.Lerp(playerRB.velocity.x, 0, t), Mathf.Lerp(playerRB.velocity.y, 0, t));
 
             playerRB.angularVelocity = Mathf.Lerp(playerRB.angularVelocity, 0, t);
+        }
+    }
+    //Player Collision
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Sharp")
+        {
+            player.TakeDamage(5);
         }
     }
 }
