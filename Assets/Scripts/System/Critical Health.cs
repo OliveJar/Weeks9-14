@@ -37,7 +37,7 @@ public class CriticalHealth : MonoBehaviour
     {
         if (isCritical)
         {
-            redOverlay.color = new Color(1, 0, 0, (Mathf.PingPong(Time.time, 50)));
+            redOverlay.color = new Color(1, 0, 0, (Mathf.PingPong(Time.time, 0.5f)) );
         }
 
         if (player.health <= 0)
