@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded = false;
 
+    public AnimatorScript animatorScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRB.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, playerRB.velocity.y);
+        if (animatorScript.isAttacking)
+        {
+            playerRB.velocity = Vector2.zero;
+        }
+        else
+            playerRB.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, playerRB.velocity.y);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {

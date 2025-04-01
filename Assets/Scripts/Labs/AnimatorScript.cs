@@ -8,6 +8,11 @@ public class AnimatorScript : MonoBehaviour
     private float direction;
     public SpriteRenderer spriteRenderer;
 
+    public bool isAttacking = false;
+
+    [SerializeField]
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,10 +48,19 @@ public class AnimatorScript : MonoBehaviour
         {
             animator.SetBool("IsRunning", false);
         }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("HeroKnight_Attack1"))
+        {
+            isAttacking = true;
+        }
+        else
+        {
+            isAttacking = false;
+        }
     }
 
-    public void AttackHasFinnished()
+    /*public void AttackHasFinnished()
     {
         animator.ResetTrigger("Attack");
-    }
+    }*/
 }
