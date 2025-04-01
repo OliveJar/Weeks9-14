@@ -21,6 +21,8 @@ public class Playermovement : MonoBehaviour
     private float maxSpeed = 5;
     [SerializeField]
     private float rotSpeed = 1;
+    [SerializeField]
+    private float maxRotSpeed = 400;
 
     [Header("Player Object")]
     [SerializeField]
@@ -84,6 +86,16 @@ public class Playermovement : MonoBehaviour
         {
             playerRB.velocity = playerRB.velocity.normalized * maxSpeed;
         }
+
+        if (playerRB.angularVelocity > maxRotSpeed)
+        {
+            playerRB.angularVelocity = maxRotSpeed;
+        }
+        else if (playerRB.angularVelocity < -maxRotSpeed)
+        {
+            playerRB.angularVelocity = -maxRotSpeed;
+        }
+
 
         if (Input.GetButtonDown("Fire2"))
             t = 0;
