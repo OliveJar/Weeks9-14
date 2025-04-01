@@ -26,7 +26,9 @@ public class Playermovement : MonoBehaviour
     [SerializeField]
     private Rigidbody2D playerRB;
 
-    private float t = 5f;
+    public float s = 0.05f;
+
+    private float t;
 
     // Start is called before the first frame update
     void Start()
@@ -88,8 +90,10 @@ public class Playermovement : MonoBehaviour
 
         if (Input.GetButton("Fire2"))
         {
-            t += 5 * Time.deltaTime;
+            t += s * Time.deltaTime;
             playerRB.velocity = new Vector2 (Mathf.Lerp(playerRB.velocity.x, 0, t), Mathf.Lerp(playerRB.velocity.y, 0, t));
+
+            playerRB.angularVelocity = Mathf.Lerp(playerRB.angularVelocity, 0, t);
         }
     }
 }

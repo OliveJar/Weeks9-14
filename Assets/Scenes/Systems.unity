@@ -276,6 +276,7 @@ MonoBehaviour:
   maxSpeed: 6
   rotSpeed: 1
   playerRB: {fileID: 1299101761}
+  s: 0.05
 --- !u!212 &1299101763
 SpriteRenderer:
   m_ObjectHideFlags: 0
