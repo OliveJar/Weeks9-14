@@ -34,7 +34,9 @@ public class Playermovement : MonoBehaviour
 
     public float s = 0.05f;
 
-    private float t;
+    public float t;
+    [HideInInspector]
+    public bool brakeReset = true;
 
     // Start is called before the first frame update
     void Start()
@@ -101,17 +103,34 @@ public class Playermovement : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && brakeReset)
+        { 
             t = 0;
+        }
 
-        if (Input.GetButton("Fire2"))
+        t += s * Time.deltaTime;
+
+        if (Input.GetButton("Fire2") && brakeReset)
         {
-            t += s * Time.deltaTime;
+            StartCoroutine(resetBrake());
+
             playerRB.velocity = new Vector2 (Mathf.Lerp(playerRB.velocity.x, 0, t), Mathf.Lerp(playerRB.velocity.y, 0, t));
 
             playerRB.angularVelocity = Mathf.Lerp(playerRB.angularVelocity, 0, t);
         }
+
+        if (t > 0.1)
+        {
+            brakeReset = true;
+        }
     }
+
+    private IEnumerator resetBrake()
+    {
+        yield return new WaitForSeconds(1);
+        brakeReset = false;
+    }
+
     //Player Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
