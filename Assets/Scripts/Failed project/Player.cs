@@ -24,8 +24,6 @@ public class Player : MonoBehaviour
         {
             health -= (damage);
         }
-      
-        Debug.Log($"Player took {damage} damage! Health: {health}");
 
         onTakeDamage?.Invoke(); // Trigger event after damage is taken
     }
@@ -42,7 +40,6 @@ public class Player : MonoBehaviour
         {
             health += healAmount;
         }
-        Debug.Log($"Player healed {healAmount}! Health: {health}");
     }
 
     public void TakeDamageOverTime(int damage)

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CriticalHealth : MonoBehaviour
 {
     private bool isCritical = false;
+
+    public Text healthText; // Reference to the health text
 
     public Player player; // Reference to the player
 
@@ -20,7 +23,7 @@ public class CriticalHealth : MonoBehaviour
 
         if (player.health <= 40)
         {
-            Debug.Log("CRITICAL WARNING: Health is low!");
+            healthText.text = "Critical Health!"; // Update health text
             isCritical = true;
             player.onTakeDamage.AddListener(ShowRedScreenEffect); // Add new effect
         }
