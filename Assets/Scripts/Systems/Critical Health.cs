@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CriticalHealth : MonoBehaviour
 {
     private bool isCritical = false;
 
-    public Text healthText; // Reference to the health text
+    public TMPro.TextMeshProUGUI healthText; // Reference to the health text
 
     public Player player; // Reference to the player
 
@@ -29,6 +28,7 @@ public class CriticalHealth : MonoBehaviour
         }
         else
         {
+            healthText.text = ""; // Clear health text
             player.onTakeDamage.RemoveListener(ShowRedScreenEffect); // Remove effect
             isCritical = false; // Reset the effect
         }

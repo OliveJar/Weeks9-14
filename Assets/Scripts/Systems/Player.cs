@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     public UnityEvent onTakeDamage; // Event for taking damage
     public UnityEvent onIce; // Event for ice effect
+    public UnityEvent onHeal; // Event for healing
     public float health = 100;
 
     private bool isTakingDamage = false;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         if (health < 100)
         {
             health += healAmount;
+            onHeal?.Invoke(); // Trigger event after damage is taken
         }
     }
 

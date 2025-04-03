@@ -10,6 +10,7 @@ public class Healthbar : MonoBehaviour
     private void Start()
     {
         player.onTakeDamage.AddListener(UpdateHealthBar);
+        player.onHeal.AddListener(UpdateHealthBar);
     }
 
     public void UpdateHealthBar()
