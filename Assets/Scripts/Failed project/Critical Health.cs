@@ -12,10 +12,12 @@ public class CriticalHealth : MonoBehaviour
     private void Start()
     {
         player.onTakeDamage.AddListener(CheckHealth);
+        player.onIce.AddListener(showBlueScreenEffect);
     }
 
     void CheckHealth()
     {
+
         if (player.health <= 40)
         {
             Debug.Log("CRITICAL WARNING: Health is low!");
@@ -25,6 +27,7 @@ public class CriticalHealth : MonoBehaviour
         else
         {
             player.onTakeDamage.RemoveListener(ShowRedScreenEffect); // Remove effect
+            isCritical = false; // Reset the effect
         }
     }
 
@@ -32,12 +35,28 @@ public class CriticalHealth : MonoBehaviour
     {
         isCritical = true;
     }
+    void showBlueScreenEffect()
+    {
+        
+    }
 
     void Update()
     {
         if (isCritical)
         {
             redOverlay.color = new Color(1, 0, 0, (Mathf.PingPong(Time.time, 0.5f)) );
+        }
+        else if (player.isOnIce)
+        {
+            redOverlay.color = new Color(0, 0, 1, (Mathf.PingPong(Time.time, 0.5f)));
+        }
+        else if (isCritical && player.isOnIce)
+        {
+            redOverlay.color = new Color(1, 0, 1, (Mathf.PingPong(Time.time, 0.5f)));
+        }
+        else
+        {
+            redOverlay.color = new Color(0, 0, 0, 0); // Reset to transparent
         }
 
         if (player.health <= 0)

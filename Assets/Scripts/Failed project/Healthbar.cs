@@ -12,7 +12,7 @@ public class Healthbar : MonoBehaviour
         player.onTakeDamage.AddListener(UpdateHealthBar);
     }
 
-    void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         healthbar.localScale = new Vector3(player.health * 3, healthbar.localScale.y, healthbar.localScale.z);
     }
