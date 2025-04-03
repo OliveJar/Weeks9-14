@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 759426277}
   - component: {fileID: 759426276}
   m_Layer: 0
-  m_Name: Space man 2.0 no rocket
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

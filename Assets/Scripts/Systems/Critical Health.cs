@@ -14,12 +14,11 @@ public class CriticalHealth : MonoBehaviour
     private void Start()
     {
         player.onTakeDamage.AddListener(CheckHealth);
-        player.onIce.AddListener(showBlueScreenEffect);
+        player.onHeal.AddListener(CheckHealth); // Add listener for healing
     }
 
     void CheckHealth()
     {
-
         if (player.health <= 40)
         {
             healthText.text = "Critical Health!"; // Update health text
@@ -30,17 +29,13 @@ public class CriticalHealth : MonoBehaviour
         {
             healthText.text = ""; // Clear health text
             player.onTakeDamage.RemoveListener(ShowRedScreenEffect); // Remove effect
-            isCritical = false; // Reset the effect
+            isCritical = false;
         }
     }
 
     void ShowRedScreenEffect()
     {
         isCritical = true;
-    }
-    void showBlueScreenEffect()
-    {
-        
     }
 
     void Update()
