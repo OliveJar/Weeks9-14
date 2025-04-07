@@ -10,9 +10,17 @@ public class Player : MonoBehaviour
     public UnityEvent onTakeDamage; // Event for taking damage
     public UnityEvent onIce; // Event for ice effect
     public UnityEvent onHeal; // Event for healing
+    public UnityEvent onDeath; // Event for death
+    public UnityEvent onRadiation; // Event for item pickup
+    public UnityEvent onFire; // Event for fire effect
+
     public float health = 100;
 
-    private bool isTakingDamage = false;
+    [HideInInspector]
+    public Item item; // Reference to the item script
+
+    private bool isTakingDamage = false; // if the player is taking damage set to no
+
     [HideInInspector]
     public bool isOnIce = false; // Variable to track if the player is iced
 
@@ -23,23 +31,34 @@ public class Player : MonoBehaviour
     {
         if (health > 0)
         {
-            health -= (damage);
+            health -= (damage); // if the health isnt 0 take damage by the damage amount
         }
 
         onTakeDamage?.Invoke(); // Trigger event after damage is taken
+
+        if (health <= 0)
+        {
+            onDeath?.Invoke(); // Trigger death event
+            health = 0; // Ensure health doesn't go below 0
+        }
+    }
+
+    public void Fire()
+    {
+        onFire?.Invoke(); // Trigger fire effect event
     }
 
     public void Ice()
     {
         onIce?.Invoke(); // Trigger ice effect event
-        isOnIce = true;
+        isOnIce = true; // the player is on ice
     }
 
     public void Heal(float healAmount)
     {
         if (health < 100)
         {
-            health += healAmount;
+            health += healAmount; // heal by the heal amount if the health isnt full
             onHeal?.Invoke(); // Trigger event after damage is taken
         }
     }
@@ -47,21 +66,24 @@ public class Player : MonoBehaviour
     public void TakeDamageOverTime(int damage)
     {
         if (!isTakingDamage)
-            StartCoroutine(DamageOverTimeCoroutine(damage, duration));
+            StartCoroutine(DamageOverTimeCoroutine(damage, duration)); // start taking damage over time
     }
 
     public IEnumerator DamageOverTimeCoroutine(int damage, float time)
     {
-        float elapsed = 0f;
-        while (elapsed < time)
+        onRadiation?.Invoke(); // Trigger radiation event
+
+        float elapsed = 0f; // reset timer
+
+        while (elapsed < time) // while the elapsed time is under the damage time
         {
-            TakeDamage((damage * 0.025f) / time);
-            elapsed += Time.deltaTime * 1.0f;
+            TakeDamage((damage * 0.025f) / time); // Take damage every incriment of time
+            elapsed += Time.deltaTime * 1.0f; // Increment elapsed time
             onTakeDamage?.Invoke(); // Trigger event after damage is taken
-            isTakingDamage = true;
+            isTakingDamage = true; // Set taking damage state
             yield return null;
         }
         isOnIce = false; // Reset ice effect
-        isTakingDamage = false;
+        isTakingDamage = false; // Reset taking damage state
     }
 }

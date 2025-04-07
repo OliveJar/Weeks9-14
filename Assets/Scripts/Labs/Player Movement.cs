@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 10f;
 
-    private bool isGrounded = false;
-
     public AnimatorScript animatorScript;
 
     // Start is called before the first frame update
